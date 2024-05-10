@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scalable=yes">
+	<title>WorkHub Signup</title>
+	<meta name='keywords' content='job vacancies, staffing and recruitment, job opening, work opening.'>
+    <meta name='description' content="Workhub, your gateway to career opportunities. We connect talented individuals with the job of their dreams through our platform, offering a seamless experience for both employers and job seekers.">
+    <meta name='subject' content="Job Vacancies">
+    <meta name='copyright' content='Workhub Co'>
+    <meta name='language' content='english'>
+    <meta name='revised' content='Monday, May 6TH, 2024, 12:00AM'>
+    <meta name='topic' content='Job search, job market, job openings and vacancies, remote work, networking, resume, interview'>
+    <meta name='summary' content='Workhub, your gateway to career opportunities. We connect talented individuals with the job of their dreams through our platform, offering a seamless experience for both employers and job seekers.'>
+    <meta name='classification' content='Job Vacancies'>
+    <meta name='author' content='Aderibigbe Ayomide, uniwylimp@gmail.com'>
+    <meta name='designer' content='Workhub, workhubagency@outlook.com'>
+    <meta name='reply-to' content='workhubagency@outlook.com'>
+    <meta name='owner' content='Aderibigbe Ayomide, uniwylimp@gmail.com'>
+    <meta name='url' content='https://workhubagency.pythonanywhere.com'>
+    <meta name='identifier-URL' content='https://workhubagency.pythonanywhere.com'>
+    <meta name='directory' content='submission'>
+    <meta name='pagename' content='Workhub Job Vacancies.'>
+    <meta name='category' content='Staffing and Recruitment, job'>
+    <meta name='coverage' content='Worldwide'>
+    <meta name='distribution' content='Global'>
+    <meta name='rating' content='General'>
+    <meta name='target' content='all'>
+    <meta name='HandheldFriendly' content='True'>
+    <meta name='MobileOptimized' content='320'>
+	<link rel="stylesheet" type="text/css" href="{% static './css/employee_signup.css' %}">
+	<script type="text/javascript" src="{% static './js/jquery-1.9.1.min.js' %}"></script>
+</head>
+<body>
+	<nav>
+		<div class="logo">
+			<img src="{% static './asset/logo/logo.png' %}">
+		</div>
+		<div class="navigations nav_old">
+			<a href="/">Home</a>
+			<a href="/job_board">JobBoard</a>
+			<a href="/employer_signup">Company</a>
+			<a href="/employee_signup">FindJob</a>
+			<a href="https://www.themuse.com/advice/45-pieces-of-career-advice-that-will-get-you-to-the-top" target="_blank">Carrier</a>
+			<a href="https://flutterwave.com/donate/61efsjgmjsvx" target="_blank">Donate</a>
+		</div>
+		<div class="extra">
+			<a href="https://www.x.com/workhubagency/" target="_blank" class="social_social"><img src="{% static './asset/img/facebook.png' %}"></a>
+			<a href="https://www.instagram.com/workhub.co/" target="_blank" class="social_social"><img src="{% static './asset/img/instagram_1.png' %}"></a>
+			<a href="https://chat.whatsapp.com/GprLUZWV7TP5KtjSBIIb8I" target="_blank" class="social_social"><img src="{% static './asset/img/whatsapp_1.png' %}"></a>
+			<span class="classico_button">
+				<a href="/login">Get Started</a>
+			</span>
+			<a href="#" id="menu_drop"><img src="{% static './asset/img/menu_tab.png' %}" class="menu_tab"></a>
+		</div>
+	</nav>
+	<section class="navigation_drop_down">
+		<a href="/">Home</a>
+		<a href="/job_board">JobBoard</a>
+		<a href="/employer_signup">Company</a>
+		<a href="/employee_signup">FindJob</a>
+		<a href="https://www.themuse.com/advice/45-pieces-of-career-advice-that-will-get-you-to-the-top" target="_blank">Carrier</a>
+		<a href="https://flutterwave.com/donate/61efsjgmjsvx" target="_blank">Donate</a>
+	</section>
+	<section class="main">
+		<div class="form_class">
+			<h5 class="red" id="message_code" style="margin: 0px; padding: 0px; padding-bottom: 5px;"></h5>
+			<h3>Looking For A Job?!</h3>
+			<p>Get your dream job in any country of your choice!</p>
+			<form method="POST" action="signup">
+				{% csrf_token %}
+				<input type="email" id="email" name="email" placeholder="Email:">
+				<input type="text" id="fullname" name="fullname" placeholder="Full-Name:">
+				<input type="password" id="password" name="password" placeholder="Password: ">
+				<input type="password" id="repeatpassword" name="repeatpassword" placeholder="Repeat Password: ">
+				<input type="text" id="usertype" name="usertype" value="employee" style="display: none;">
+				<button type="submit" id="login-button">Signup</button>
+			</form>
+			<a href="/login">Have an account already? <span class="already">Login!</span></a>
+		</div>
+		<img src="{% static './img/Caleblogo.png' %}" class="mainbackground">
+	</section>
+	<h3 class="support_message">Your Device Screen Size Is Not Supported. Try a larger screen!</h3>
+	<div id="hideAll">&nbsp</div>
+	<script type="text/javascript">
+		window.onload = function(){
+			document.getElementById("hideAll").style.display = "none";
+		}
+
+		var super_count = 0;
+		$("#menu_drop").on("click", function()
+		{
+			if(super_count == 0)
+			{
+				super_count = 1;
+				let eken = document.querySelector(".navigation_drop_down");
+				eken.style = "flex !important;";
+				$(".navigation_drop_down").css({"height": "100%", "width": "100%", "position": "fixed", "left": "0px"});
+			}
+
+			else
+			{
+				super_count = 0;
+				let eken = document.querySelector(".navigation_drop_down");
+				eken.style = "none !important;";
+			}
+		});
+
+		$(document).ready(function(){
+			setInterval(function(){
+			    if(window.innerWidth > 930)
+			    {
+			        $(".navigation_drop_down").css({"display": "none"})
+			    }
+			});
+		});
+
+		console.log("hello");
+		$('#login-button').on('click', function(e){
+			e.preventDefault();
+			console.log("active login session");
+			var email =  document.querySelector("#email");
+			var fullname =  document.querySelector("#fullname");
+			var password = document.querySelector("#password");
+			var repeatpassword = document.querySelector("#repeatpassword");
+			var usertype = document.querySelector("#usertype");
+			if (email.value == "" || password.value == "" || repeatpassword.value == "" || fullname.value == "")
+			{
+                $("#message_code").html("(Fill In Details)")
+			}
+			else
+			{
+				$('#login-button').html("loading...")
+				$.ajax({
+					type: 'GET',
+					url: "{% url 'signup' %}",
+					data: {
+						"email": email.value,
+						"fullname": fullname.value,
+						"password": password.value,
+						"repeatpassword": repeatpassword.value,
+						"usertype": usertype.value,
+					},
+
+					success: function(response)
+					{
+						email.value = ""
+						fullname.value = ""
+						password.value = ""
+						repeatpassword.value = ""
+						if (response.message == "success"){
+							console.log("success")
+							window.location.href = "/dashboard"
+							$('#login-button').html("successful")
+						}
+						else
+						{
+							$("#message_code").html("(" + response.message + ")")
+							$('#login-button').html("signup")
+						}
+					}
+				})
+			}
+		})
+	</script>
+</body>
+</html>

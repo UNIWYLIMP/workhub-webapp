@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scalable=yes">
+	<title>Work Hub</title>
+	<link rel="stylesheet" type="text/css" href="{% static './css/carrier_advice.css' %}">
+	<script type="text/javascript" src="{% static './js/jquery-1.9.1.min.js' %}"></script>
+</head>
+<body>
+	<nav>
+		<div class="logo">
+			<img src="{% static './asset/logo/logo.png' %}">
+		</div>
+		<div class="navigations nav_old">
+			<a href="/">Home</a>
+			<a href="/employee_signup">JobFind</a>
+			<a href="/employer_signup">Company</a>
+			<a href="/carrier_advice">Carrier</a>
+			<a href="/about">About</a>
+			<a href="https://flutterwave.com/donate/61efsjgmjsvx" target="_blank">Donate</a>
+		</div>
+		<div class="extra">
+			<a href="#" class="social_social"><img src="{% static './asset/img/whatsapp_1.png' %}"></a>
+			<a href="#" class="social_social"><img src="{% static './asset/img/instagram_1.png' %}"></a>
+			<a href="#" class="social_social"><img src="{% static './asset/img/facebook.png' %}"></a>
+			<span class="classico_button">
+				<a href="/login">Get Started</a>
+			</span>
+			<a href="#" id="menu_drop"><img src="{% static './asset/img/menu_tab.png' %}" class="menu_tab"></a>
+		</div>
+	</nav>
+	<section class="navigation_drop_down">
+		<a href="/">Home</a>
+		<a href="/employee_signup">JobFind</a>
+		<a href="/employer_signup">Company</a>
+		<a href="/carrier_advice">Carrier</a>
+		<a href="/about">About</a>
+		<a href="https://flutterwave.com/donate/61efsjgmjsvx" target="_blank">Donate</a>
+	</section>
+	<main>
+		<h1>Carrier Advice</h1>
+		<img src="{% static '/asset/img/accountant2.jpg' %}" class="peto">
+		<p>
+			Today, I Aderibigbe Ayomide the founder of Work Hub Cooperation stands before you to share my insights and wisdom on a topic that holds great significance in our lives: career advice. The journey of a career is an exhilarating and transformative one, filled with choices, challenges, and opportunities. It is a path that shapes our identities, impacts our well-being, and ultimately determines our contribution to the world. So, let us embark on this journey together, and allow me to impart upon you some invaluable advice that may guide you towards a fulfilling and successful career.
+		</p>
+		<p>
+			First and foremost, embrace self-discovery. Take the time to truly understand who you are, your passions, strengths, and values. In a world of endless possibilities, it is essential to align your career choices with your authentic self. Reflect upon your interests and ambitions, for they are the fuel that will drive you forward. Find that sweet spot where your talents intersect with your passion, and you will discover a sense of purpose that will sustain you throughout your professional life.
+		</p>
+
+		<p>
+			However, self-discovery is just the beginning. Embrace the pursuit of knowledge. Continuously seek opportunities to learn, grow, and expand your skill set. Whether it is through formal education, online courses, mentorship, or self-study, never cease to invest in your intellectual capital. The world is ever-evolving, and staying relevant in your chosen field requires a commitment to lifelong learning. Remember, knowledge is power, and it will open doors that you never thought possible.
+		</p>
+
+		<p>
+			As you navigate your career path, do not fear failure. In fact, embrace it. Failure is not a reflection of your worth or potential; rather, it is an opportunity for growth and resilience. It is through failure that we learn our most valuable lessons and discover our true capabilities. So, do not shy away from taking risks and venturing into the unknown. Embrace challenges with open arms, for they will mold you into a stronger, more adaptable individual.
+		</p>
+
+		<p>
+			Additionally, remember the importance of perseverance. In the face of adversity, it is easy to lose sight of our goals and succumb to discouragement. However, it is during these moments that we must dig deep within ourselves and summon the strength to persevere. Success rarely comes overnight; it is the result of unwavering determination and relentless effort. Stay focused on your vision, maintain a positive mindset, and persist in the pursuit of your dreams. Remember, the greatest achievements often come to those who refuse to give up.
+		</p>
+
+		<p>
+			While pursuing your individual ambitions, do not forget the power of collaboration and networking. Build meaningful connections with like-minded individuals, mentors, and professionals in your field. Surround yourself with a diverse network of people who inspire and challenge you. Seek opportunities to collaborate and learn from others, for it is through these connections that doors of opportunity swing wide open. Remember, success is rarely achieved in isolation, and the strength of your network can be the catalyst for breakthroughs and new horizons.
+		</p>
+
+		<p>
+		Furthermore, in an ever-changing world, adaptability is key. Embrace flexibility and embrace change. Technology and innovation are transforming industries at an unprecedented pace, and the ability to adapt to new circumstances and embrace emerging trends is paramount. Embrace a growth mindset, be open to new ideas, and continuously seek ways to reinvent yourself and your skill set. In doing so, you will remain relevant and agile, ready to seize the opportunities that lie ahead.
+		</p>
+
+		<p>
+		Lastly, and most importantly, never lose sight of your own well-being. A successful career is not solely defined by financial achievements or professional accolades. It is a holistic journey that encompasses your physical, mental, and emotional well-being. Prioritize self-care, maintain a healthy work-life balance, and nurture your relationships. Remember to pursue hobbies and passions outside of work, for they will fuel your creativity and provide you with a sense of fulfillment. Your career should complement your life, not consume it.
+		</p>
+
+		<p>
+		In conclusion, my dear friends, the road to a successful and fulfilling career is paved with self-discovery, continuous learning, perseverance, collaboration, adaptability, and self-care. Embrace these principles as you navigate the ever-changing landscape of the professional world, and you will forge a path that aligns with your true purpose and brings you immeasurable joy and satisfaction.
+		</p>
+
+		<p>
+		May each of you find the courage to chase your dreams, the resilience to overcome obstacles, and the wisdom to create a career that is as extraordinary as the individuals standing before me. Your journey begins today. Seize it with enthusiasm and never stop believing in your own potential. The world eagerly awaits the unique contributions that only you can bring.
+		</p>
+
+		<p>
+		Thank you.
+		</p>
+	</main>
+	<script type="text/javascript">
+		var super_count = 0;
+		$("#menu_drop").on("click", function()
+		{
+			if(super_count == 0)
+			{
+				super_count = 1;
+				let eken = document.querySelector(".navigation_drop_down");
+				eken.style = "flex !important;";
+				$(".navigation_drop_down").css({"height": "100%", "width": "100%", "position": "fixed", "left": "0px", "z-index": "5", "display": "flex"});
+			}
+
+			else
+			{
+				super_count = 0;
+				let eken = document.querySelector(".navigation_drop_down");
+				eken.style = "none !important;";
+			}
+
+		});
+
+		$(document).ready(function(){
+			setInterval(function(){
+			    if(window.innerWidth > 930)
+			    {
+			        $(".navigation_drop_down").css({"display": "none"})
+			    }
+			});
+		});
+	</script>
+</body>
+</html>

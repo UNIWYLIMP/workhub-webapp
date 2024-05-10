@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scalable=yes">
+	<title>Work Hub</title>
+	<link rel="stylesheet" type="text/css" href="{% static './css/postjob.css' %}">
+	<script type="text/javascript" src="{% static './js/jquery-1.9.1.min.js' %}"></script>
+</head>
+<body>
+	<nav>
+		<div class="logo">
+			<img src="{% static './asset/logo/logo.png' %}">
+		</div>
+		<div class="navigations nav_old">
+			<a href="/">Home</a>
+			<a href="/job_board">JobBoard</a>
+			<a href="/employer_signup">Company</a>
+			<a href="/employee_signup">FindJob</a>
+			<a href="https://www.themuse.com/advice/45-pieces-of-career-advice-that-will-get-you-to-the-top" target="_blank">Carrier</a>
+			<a href="https://flutterwave.com/donate/61efsjgmjsvx" target="_blank">Donate</a>
+		</div>
+		<div class="extra">
+			<a href="https://www.x.com/workhubagency/" target="_blank" class="social_social"><img src="{% static './asset/img/facebook.png' %}"></a>
+			<a href="https://www.instagram.com/workhub.co/" target="_blank" class="social_social"><img src="{% static './asset/img/instagram_1.png' %}"></a>
+			<a href="https://chat.whatsapp.com/GprLUZWV7TP5KtjSBIIb8I" target="_blank" class="social_social"><img src="{% static './asset/img/whatsapp_1.png' %}"></a>
+			<span class="classico_button">
+				<a href="/logout">LOGOUT</a>
+			</span>
+			<a href="#" id="menu_drop"><img src="{% static './asset/img/menu_tab.png' %}" class="menu_tab"></a>
+		</div>
+	</nav>
+	<section class="navigation_drop_down">
+			<span class="tab_sec_header">
+				<span class="red">NAVI</span>GATION
+			</span>
+			<span class="tab_sec_item">
+				Primary Links
+			</span>
+			<a href="https://www.themuse.com/advice/45-pieces-of-career-advice-that-will-get-you-to-the-top" target="_blank" class="tab_sec_item_child">
+				<img src="{% static './asset/img/picture.png' %}">
+				Carrier Advice
+			</a>
+			<a href="https://www.linkedin.com/company/workhub-corporation/" target="_blank" class="tab_sec_item_child">
+				<img src="{% static './asset/img/event.png' %}">
+				About
+			</a>
+			<a href="https://www.instagram.com/workhub.co/" target="_blank" class="tab_sec_item_child">
+				<img src="{% static './asset/img/article.png' %}">
+				Contact
+			</a>
+			<span class="tab_sec_item">
+				Social Pages Links
+			</span>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/instagram_1.png' %}">
+				<a href="https://www.instagram.com/workhub.co/" target="_blank">Instagram</a>
+			</span>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/facebook.png' %}">
+				<a href="https://www.x.com/workhubagency/" target="_blank">X(Twitter)</a>
+			</span>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/linkedin.png' %}">
+				<a href="https://www.linkedin.com/company/workhub-corporation/" target="_blank">LinkedIn</a>
+			</span>
+			<span class="tab_sec_item">
+				Community Links
+			</span>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/whatsapp_1.png' %}">
+				<a href="https://chat.whatsapp.com/GprLUZWV7TP5KtjSBIIb8I" target="_blank">Whatsapp</a>
+			</span>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/telegram.png' %}">
+				Telegram
+			</span>
+	</section>
+    <section class="main">
+		<div class="single_job_apply">
+			<div class="single_job_tab form_class">
+				<h1 class='tora'>
+					<span>Create Job Offer</span>
+					<span><a href='/dashboard'>(exit)</a></span>
+				</h1>
+				<form method="POST" action="employer_create_job">
+				{% csrf_token %}
+					<input type="text" name="jobTitle" placeholder="Job Title: software developer">
+					<span>
+						<span class="single_radio">
+							On-Site
+							<input type="radio" name="jobType" value="on-site" checked>
+						</span>
+						<span class="single_radio">
+							Hybrid
+							<input type="radio" name="jobType" value="hybrid">
+						</span>
+						<span class="single_radio">
+							Remote
+							<input type="radio" name="jobType" value="remote">
+						</span>
+					</span>
+					<textarea placeholder="Job Description:" name="jobDescription"></textarea>
+					<input type="text" name="jobPay" placeholder="Jop Pay: 13000$">
+					<input type="text" name="jobLocation" placeholder="Jop Location: Florida, USA. ">
+					<input type="text" name="jobExternalLink" style="display: none;" placeholder="External Job Link: " value="External Job Link: " id="bind">
+					<div class="ken">
+						<input type="checkbox" name="jobExternal" value="true" onclick="clearContents(this);">
+						<label>External Hosted Job.</label>
+					</div>
+					<button type="submit">Submit</button>
+				</form>
+			</div>
+		</div>
+    </section>
+	<img src="{% static './img/Caleblogo.png' %}" class="mainbackground">
+    <script type="text/javascript">
+		var noda = 1;
+	   	function clearContents(element)
+	   	{
+	   		if (noda == 0){
+	   			var truth = document.getElementById('bind');
+	    		truth.style = 'display: none;';
+	    		noda ++;
+	   		}
+	   		else if(noda == 1)
+	    	{
+	    		var truth = document.getElementById('bind');
+	    		truth.style = 'display: block;';
+	    		noda --;
+	    	}
+	   	}
+		var super_count = 0;
+		$("#menu_drop").on("click", function()
+		{
+			if(super_count == 0)
+			{
+				super_count = 1;
+				let eken = document.querySelector(".navigation_drop_down");
+				eken.style = "flex !important;";
+				$(".navigation_drop_down").css({"height": "100%", "width": "100%", "position": "fixed", "left": "0px", "z-index": "5", "display": "flex"});
+			}
+
+			else
+			{
+				super_count = 0;
+				let eken = document.querySelector(".navigation_drop_down");
+				eken.style = "none !important;";
+			}
+
+		});
+
+		$(document).ready(function(){
+			setInterval(function(){
+			    if(window.innerWidth > 930)
+			    {
+			        $(".navigation_drop_down").css({"display": "none"})
+			    }
+			});
+		});
+    </script>
+</body>

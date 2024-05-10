@@ -1,0 +1,729 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scalable=yes">
+	<title>WorkHub Job Board</title>
+	<meta name='keywords' content='job vacancies, staffing and recruitment, job opening, work opening.'>
+    <meta name='description' content="Workhub, your gateway to career opportunities. We connect talented individuals with the job of their dreams through our platform, offering a seamless experience for both employers and job seekers.">
+    <meta name='subject' content="Job Vacancies">
+    <meta name='copyright' content='Workhub Co'>
+    <meta name='language' content='english'>
+    <meta name='revised' content='Monday, May 6TH, 2024, 12:00AM'>
+    <meta name='topic' content='Job search, job market, job openings and vacancies, remote work, networking, resume, interview'>
+    <meta name='summary' content='Workhub, your gateway to career opportunities. We connect talented individuals with the job of their dreams through our platform, offering a seamless experience for both employers and job seekers.'>
+    <meta name='classification' content='Job Vacancies'>
+    <meta name='author' content='Aderibigbe Ayomide, uniwylimp@gmail.com'>
+    <meta name='designer' content='Workhub, workhubagency@outlook.com'>
+    <meta name='reply-to' content='workhubagency@outlook.com'>
+    <meta name='owner' content='Aderibigbe Ayomide, uniwylimp@gmail.com'>
+    <meta name='url' content='https://workhubagency.pythonanywhere.com'>
+    <meta name='identifier-URL' content='https://workhubagency.pythonanywhere.com'>
+    <meta name='directory' content='submission'>
+    <meta name='pagename' content='Workhub Job Vacancies.'>
+    <meta name='category' content='Staffing and Recruitment, job'>
+    <meta name='coverage' content='Worldwide'>
+    <meta name='distribution' content='Global'>
+    <meta name='rating' content='General'>
+    <meta name='target' content='all'>
+    <meta name='HandheldFriendly' content='True'>
+    <meta name='MobileOptimized' content='320'>
+	<link rel="stylesheet" type="text/css" href="{% static './css/job_board.css' %}">
+	<script type="text/javascript" src="{% static './js/jquery-1.9.1.min.js' %}"></script>
+</head>
+<body>
+	<nav>
+		<div class="logo">
+			<img src="{% static './asset/logo/logo.png' %}">
+		</div>
+		<div class="navigations nav_old">
+			<a href="/">Home</a>
+			<a href="/job_board">JobBoard</a>
+			<a href="/employer_signup">Company</a>
+			<a href="/employee_signup">FindJob</a>
+			<a href="https://www.themuse.com/advice/45-pieces-of-career-advice-that-will-get-you-to-the-top" target="_blank">Carrier</a>
+			<a href="https://flutterwave.com/donate/61efsjgmjsvx" target="_blank">Donate</a>
+		</div>
+		<div class="extra">
+			<a href="https://www.x.com/workhubagency/" target="_blank" class="social_social"><img src="{% static './asset/img/facebook.png' %}"></a>
+			<a href="https://www.instagram.com/workhub.co/" target="_blank" class="social_social"><img src="{% static './asset/img/instagram_1.png' %}"></a>
+			<a href="https://chat.whatsapp.com/GprLUZWV7TP5KtjSBIIb8I" target="_blank" class="social_social"><img src="{% static './asset/img/whatsapp_1.png' %}"></a>
+			<span class="classico_button">
+				<a href="/login">Signin</a>
+			</span>
+			<a href="#" id="menu_drop"><img src="{% static './asset/img/menu_tab.png' %}" class="menu_tab"></a>
+		</div>
+	</nav>
+	<section class="navigation_drop_down">
+		<a href="/">Home</a>
+		<a href="/job_board">JobBoard</a>
+		<a href="/employer_signup">Company</a>
+		<a href="/employee_signup">FindJob</a>
+		<a href="https://www.themuse.com/advice/45-pieces-of-career-advice-that-will-get-you-to-the-top" target="_blank">Carrier</a>
+		<a href="https://flutterwave.com/donate/61efsjgmjsvx" target="_blank">Donate</a>
+	</section>
+	<div id="search_filter" class="search_filter">
+		<form method='GET' id='filter_search_job'>
+			<div class="flit_flex">
+				<span>
+					<h2>Job Title: </h2>
+					<span class="flit_flex">
+						<input type='text' id="job_title" name='search' placeholder='Ex: Senior Web Developer...'>
+					</span>
+				</span>
+				<span>
+					<h2>Job Location: </h2>
+					<span class="flit_flex">
+						<input type='text' id="job_country" name='search' placeholder='Country: United Kingdom...'>
+						<input type='text' id="job_city" name='search' placeholder='City: Whales...'>
+					</span>
+				</span>
+			</div>
+			<div class="flit_flex">
+				<span>
+					<h2>Job Category: </h2>
+					<span class="flit_flex">
+						<input type='text' id="job_category" name='search' placeholder='Ex: Software Development...'>
+					</span>
+				</span>
+				<span>
+					<h2>Company: </h2>
+					<span class="flit_flex">
+						<input type='text' id="job_company" name='search' placeholder='Ex: Microsoft Co...'>
+					</span>
+				</span>
+			</div>
+			<div>
+				<h2>Job Type: </h2>
+				<span class="flit_flex">
+					<span class="lit_flex">
+						<h2>All: </h2>
+						<input type='radio' class="job_type" name='job_type' value='All' placeholder='All' checked>
+					</span>
+					<span class="lit_flex">
+						<h2>OnSite: </h2>
+						<input type='radio' class="job_type" name='job_type' value='On-Site' placeholder='On-Site'>
+					</span>
+					<span class="lit_flex">
+						<h2>Hybrid: </h2>
+						<input type='radio' name='job_type' value='Hybrid' placeholder='Hybrid'>
+					</span>
+					<span class="lit_flex">
+						<h2>Remote: </h2>
+						<input type='radio' name='job_type' value='Remote' placeholder='Remote'>
+					</span>
+					<span class="lit_flex">
+						<button type='submit' id="filter_the_search">Filter</button>
+					</span>
+				</span>
+			</div>
+		</form>
+	</div>
+	<section class="loader_container">
+            <span class="loader"></span>
+	</section>
+	<section class="main">
+		<div class="tab_sec">
+			<span class="tab_sec_header">
+				<span class="red">NAVI</span>GATION
+			</span>
+			<span class="tab_sec_item">
+				Primary Links
+			</span>
+			<a href="https://www.themuse.com/advice/45-pieces-of-career-advice-that-will-get-you-to-the-top" target="_blank" class="tab_sec_item_child">
+				<img src="{% static './asset/img/picture.png' %}">
+				Carrier Advice
+			</a>
+			<a href="https://www.linkedin.com/company/workhub-corporation/" target="_blank" class="tab_sec_item_child">
+				<img src="{% static './asset/img/event.png' %}">
+				About
+			</a>
+			<a href="https://flutterwave.com/donate/61efsjgmjsvx" target="_blank" class="tab_sec_item_child">
+				<img src="{% static './asset/img/article.png' %}">
+					Donate
+			</a>
+			<span class="tab_sec_item">
+				Social Pages Links
+			</span>
+			<a href="https://www.instagram.com/workhub.co/" target="_blank"><span class="tab_sec_item_child">
+				<img src="{% static './asset/img/instagram_1.png' %}">
+				Instagram
+			</span>
+			</a>
+			<a href="https://www.x.com/workhubagency/" target="_blank">
+				<span class="tab_sec_item_child">
+					<img src="{% static './asset/img/facebook.png' %}">
+					X(Twitter)
+				</span>
+			</a>
+			<a href="https://www.linkedin.com/company/workhub-corporation/" target="_blank">
+				<span class="tab_sec_item_child">
+					<img src="{% static './asset/img/linkedin.png' %}">
+					LinkedIn
+				</span>
+			</a>
+			<span class="tab_sec_item">
+				Community Links
+			</span>
+			<a href="https://chat.whatsapp.com/GprLUZWV7TP5KtjSBIIb8I" target="_blank">
+				<span class="tab_sec_item_child">
+					<img src="{% static './asset/img/whatsapp_1.png' %}">
+					Whatsapp
+				</span>
+			</a>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/telegram.png' %}">
+				Telegram
+			</span>
+		</div>
+		<div class="jobs">
+		</div>
+	</section>
+	<h3 class="support_message">Your Device Screen Size Is Not Supported. Try a larger screen!</h3>
+	<div id="hideAll">&nbsp</div>
+	<script type="text/javascript">
+		var super_count = 0;
+		$("#menu_drop").on("click", function()
+		{
+			if(super_count == 0)
+			{
+				super_count = 1;
+				let eken = document.querySelector(".navigation_drop_down");
+				eken.style = "flex !important;";
+				$(".navigation_drop_down").css({"height": "100%", "width": "100%", "position": "fixed", "left": "0px"});
+			}
+
+			else
+			{
+				super_count = 0;
+				let eken = document.querySelector(".navigation_drop_down");
+				eken.style = "none !important;";
+			}
+		});
+
+
+		var loader_active = false;
+		window.onload = function(){
+			document.getElementById("hideAll").style.display = "none";
+			loader_handler();
+			get_job()
+		}
+
+		function loader_handler()
+		{
+			if(loader_active == false){
+				setTimeout(function(){
+					let loader = document.querySelector('.loader_container');
+					loader.style = "display: flex !important; opacity: 1 !important;";
+					loader_active = true;
+				}, 10);
+
+				setTimeout(function(){
+					let loader = document.querySelector('.loader_container');
+					loader.style = "opacity: 0.5; !important";
+				}, 2000)
+
+				setTimeout(function(){
+					let loader = document.querySelector('.loader_container');
+					loader.style = "opacity: 0.3; !important";
+				}, 2100)
+
+				setTimeout(function(){
+					let loader = document.querySelector('.loader_container');
+					loader.style = "opacity: 0.0 !important;";
+				}, 2200)
+
+				setTimeout(function(){
+					let loader = document.querySelector('.loader_container');
+					loader.style = "display: none !important;";
+					loader_active = false;
+				}, 2300)
+			}
+		}
+
+
+		function empty_handler()
+		{
+			let handler = document.querySelector(".jobs");
+			handler.style = "display: none !important;";
+			handler = document.querySelector("#search_filter");
+			handler.style = "display: none !important;";
+			handler = document.querySelector(".tab_sec");
+			handler.style = "display: none !important;";
+			window.scrollTo(0, 0);
+		}
+
+		var filter_counter = 0;
+		$(document).on('click', '#filter_icon', function(e){
+			if(filter_counter == 0){
+				filter_counter = 1;
+				$(".search_filter").css({"display": "flex"});
+
+			}
+			else
+			{
+				filter_counter = 0;
+				$(".search_filter").css({"display": "none"});
+			}
+		});
+
+		$(document).on("submit", "#filter_search_job", filter_jobs);
+
+		function filter_jobs(e)
+		{
+			e.preventDefault();
+            let job_title_value = document.querySelector("#filter_search_job #job_title");
+            let job_country_value = document.querySelector("#filter_search_job #job_country");
+            let job_city_value = document.querySelector("#filter_search_job #job_city");
+            let job_category_value = document.querySelector("#filter_search_job #job_category");
+            let job_company_value = document.querySelector("#filter_search_job #job_company");
+            let job_type_value = document.querySelectorAll(".job_type");
+
+            let job_title = job_title_value.value
+            let job_country = job_country_value.value
+            let job_city = job_city_value.value
+            let job_category = job_category_value.value
+            let job_company = job_company_value.value
+
+            let job_type = ""
+
+            for(var single_type of job_type_value)
+            {
+            	if(single_type.checked){
+            		job_type = single_type.value
+            	}
+            }
+
+            empty_handler();
+			let jobs = document.querySelector(".jobs");
+			jobs.style = "display: flex !important;";
+			$(".jobs").css("display", "flex");
+			$(".jobs").html("");
+
+			$.ajax({
+				type: 'GET',
+				url: "{% url 'employee_filter_offers_offline' %}",
+				data: {
+					"job_title": job_title,
+					"job_country": job_country,
+					"job_city": job_city,
+					"job_category": job_category,
+					"job_company": job_company,
+					"job_type": job_type,
+					},
+				success: function(response)
+				{
+					loader_handler();
+					$(".jobs").html("<div class='job_header'><h1>Job Offers</h1><div class='navigations' id='search_bar_tab'><form method='POST' id='search_job'><span><img src='/static/asset/img/filter_two.png' id='filter_icon' class='filter_icon'><img src='/static/asset/img/search.svg' class='search_icon'><input type='text' name='search' placeholder='Search...'><button type='submit'>Search</button></span></form></div><p>Job Results(" + response.num_of_jobs + ")</p></div>")
+					for(let x = 0; x < response.num_of_jobs; x++)
+					{
+							let new_profile = "";
+							if(response.jobs[x].job_poster_profile_img == "none")
+							{
+								new_profile = "/static/asset/img/project.png";
+							}
+							else
+							{
+								new_profile = response.jobs[x].job_poster_profile_img
+							}
+							console.log(response)
+							let new_list = ""
+							let job_title = ""
+
+							if(window.innerWidth > 1001)
+							{
+								if(response.jobs[x].job_categories.length < 5)
+								{
+									for(let p = 0; p < response.jobs[x].job_categories.length;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 10) + "...</span>"
+									}
+								}
+
+								else
+								{
+									for(let p =0; p < 5;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 10) + "...</span>"
+									}
+								}
+
+								if (response.jobs[x].job_title.length < 22)
+								{
+									job_title = response.jobs[x].job_title
+								}
+
+								else
+								{
+									job_title = response.jobs[x].job_title.substr(0, 23) + "..."
+								}
+							}
+
+							else if(window.innerWidth < 1001 && window.innerWidth > 450)
+							{
+								if(response.jobs[x].job_categories.length < 5)
+								{
+									for(let p = 0; p < response.jobs[x].job_categories.length;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 8) + "...</span>"
+									}
+								}
+
+								else
+								{
+									for(let p =0; p < 5;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 8) + "...</span>"
+									}
+								}
+
+								if (response.jobs[x].job_title.length < 22)
+								{
+									job_title = response.jobs[x].job_title
+								}
+
+								else
+								{
+									job_title = response.jobs[x].job_title.substr(0, 23) + "..."
+								}
+							}
+
+							else
+							{
+								if(response.jobs[x].job_categories.length < 3)
+								{
+									for(let p = 0; p < response.jobs[x].job_categories.length;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 6) + "...</span>"
+									}
+								}
+
+								else
+								{
+									for(let p =0; p < 3;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 6) + "...</span>"
+									}
+								}
+
+								if (response.jobs[x].job_title.length < 18)
+								{
+									job_title = response.jobs[x].job_title
+								}
+
+								else
+								{
+									job_title = response.jobs[x].job_title.substr(0, 18) + "..."
+								}
+							}
+
+							$(".jobs").append("<a href='/jobview/" + response.jobs[x].job_id + "' target='_blank' class='single_job' id='job_stack_item' data-job-id=" + response.jobs[x].job_id + "><div class='fxskillset' data-job-id=" + response.jobs[x].job_id + "><div class='sevila' data-job-id=" + response.jobs[x].job_id + "><img src='" + new_profile + "' class='company_img' data-job-id=" + response.jobs[x].job_id + "><span class='job_content' data-job-id=" + response.jobs[x].job_id + "><h4 data-job-id=" + response.jobs[x].job_id + ">" + job_title + "</h4><p class='company_location_type' data-job-id=" + response.jobs[x].job_id + "></p><p class='company_name' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_poster_name + " - " + response.jobs[x].job_location + " - ("  + response.jobs[x].job_type + ")</p><p class='company_name' data-job-id=" + response.jobs[x].job_id + ">SALARY: " + response.jobs[x].job_pay + " (monthly)</p><article class='lorel' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_description.substr(0, 250) + "...<span class='red garbage' data-job-id=" + response.jobs[x].job_id + ">MORE</article><p class='categories_title' data-job-id=" + response.jobs[x].job_id + ">Categories:</p><span class='category_List_tab' data-job-id=" + response.jobs[x].job_id + ">" + new_list + "...</span></span><span class='job_menu' data-job-id=" + response.jobs[x].job_id + "><img src='/static/asset/img/menu.svg' class='more' data-job-id=" + response.jobs[x].job_id + "></span></div></div></a>")
+						}
+						$(".jobs").append("<div><br><br><br><span class='classico_button'><a onclick=get_job()>Refresh Jobs</a></span><br><br><br></div>")
+
+					if(response.num_of_jobs == 0)
+					{
+						$(".jobs").append("<br><br><br><br><br><br><br><h1 style='color:red;padding: 50px;font-size:30px;font-family:sans-serif;'>No Jobs Found</h1>");
+					}
+					console.log(response.num_of_jobs)
+
+					let tab = document.querySelector(".tab_sec");
+					tab.style = "display: flex !important;";
+					window.scrollTo(0, 0);
+				}
+			})
+		}
+
+        $(document).on("submit", "#search_job", searcher);
+
+		function searcher(e){
+			e.preventDefault();
+            let input_value = document.querySelector("#search_job input");
+			input_new = input_value.value
+			get_search_job(input_new);
+		}
+
+		function get_search_job(search_job)
+		{
+			empty_handler();
+			let jobs = document.querySelector(".jobs");
+			jobs.style = "display: flex !important;";
+			$(".jobs").css("display", "flex");
+			$(".jobs").html("");
+			$.ajax({
+				type: 'GET',
+				url: "{% url 'employee_offers_offline' %}",
+				data: {"search": search_job},
+				success: function(response)
+				{
+					loader_handler();
+					setTimeout(function(){
+						$(".jobs").html("<div class='job_header'><h1>Job Offers</h1><div class='navigations' id='search_bar_tab'><form method='POST' id='search_job'><span><img src='/static/asset/img/filter_two.png' id='filter_icon' class='filter_icon'><img src='/static/asset/img/search.svg' class='search_icon'><input type='text' name='search' placeholder='Search...'><button type='submit'>Search</button></span></form></div><p>Job Results(" + response.num_of_jobs + ")</p></div>")
+						for(let x = 0; x < response.num_of_jobs; x++)
+						{
+							let new_profile = "";
+							if(response.jobs[x].job_poster_profile_img == "none")
+							{
+								new_profile = "/static/asset/img/project.png";
+							}
+							else
+							{
+								new_profile = response.jobs[x].job_poster_profile_img
+							}
+							console.log(response)
+							let new_list = ""
+							let job_title = ""
+
+							if(window.innerWidth > 1001)
+							{
+								if(response.jobs[x].job_categories.length < 5)
+								{
+									for(let p = 0; p < response.jobs[x].job_categories.length;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 10) + "...</span>"
+									}
+								}
+
+								else
+								{
+									for(let p =0; p < 5;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 10) + "...</span>"
+									}
+								}
+
+								if (response.jobs[x].job_title.length < 22)
+								{
+									job_title = response.jobs[x].job_title
+								}
+
+								else
+								{
+									job_title = response.jobs[x].job_title.substr(0, 23) + "..."
+								}
+							}
+
+							else if(window.innerWidth < 1001 && window.innerWidth > 450)
+							{
+								if(response.jobs[x].job_categories.length < 5)
+								{
+									for(let p = 0; p < response.jobs[x].job_categories.length;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 8) + "...</span>"
+									}
+								}
+
+								else
+								{
+									for(let p =0; p < 5;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 8) + "...</span>"
+									}
+								}
+
+								if (response.jobs[x].job_title.length < 22)
+								{
+									job_title = response.jobs[x].job_title
+								}
+
+								else
+								{
+									job_title = response.jobs[x].job_title.substr(0, 23) + "..."
+								}
+							}
+
+							else
+							{
+								if(response.jobs[x].job_categories.length < 3)
+								{
+									for(let p = 0; p < response.jobs[x].job_categories.length;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 6) + "...</span>"
+									}
+								}
+
+								else
+								{
+									for(let p =0; p < 3;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 6) + "...</span>"
+									}
+								}
+
+								if (response.jobs[x].job_title.length < 18)
+								{
+									job_title = response.jobs[x].job_title
+								}
+
+								else
+								{
+									job_title = response.jobs[x].job_title.substr(0, 18) + "..."
+								}
+							}
+
+							$(".jobs").append("<a target='_blank' href='/jobview/" + response.jobs[x].job_id + "' class='single_job' id='job_stack_item' data-job-id=" + response.jobs[x].job_id + "><div class='fxskillset' data-job-id=" + response.jobs[x].job_id + "><div class='sevila' data-job-id=" + response.jobs[x].job_id + "><img src='" + new_profile + "' class='company_img' data-job-id=" + response.jobs[x].job_id + "><span class='job_content' data-job-id=" + response.jobs[x].job_id + "><h4 data-job-id=" + response.jobs[x].job_id + ">" + job_title + "</h4><p class='company_location_type' data-job-id=" + response.jobs[x].job_id + "></p><p class='company_name' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_poster_name + " - " + response.jobs[x].job_location + " - ("  + response.jobs[x].job_type + ")</p><p class='company_name' data-job-id=" + response.jobs[x].job_id + ">SALARY: " + response.jobs[x].job_pay + " (monthly)</p><article class='lorel' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_description.substr(0, 250) + "...<span class='red garbage' data-job-id=" + response.jobs[x].job_id + ">MORE</article><p class='categories_title' data-job-id=" + response.jobs[x].job_id + ">Categories:</p><span class='category_List_tab' data-job-id=" + response.jobs[x].job_id + ">" + new_list + "...</span></span><span class='job_menu' data-job-id=" + response.jobs[x].job_id + "><img src='/static/asset/img/menu.svg' class='more' data-job-id=" + response.jobs[x].job_id + "></span></div></div></a>")
+						}
+						$(".jobs").append("<div><br><br><br><span class='classico_button'><a onclick=get_job()>Refresh Jobs</a></span><br><br><br></div>")
+
+						if(response.num_of_jobs == 0)
+						{
+							$(".jobs").append("<br><br><br><br><br><br><br><h1 style='color:red;padding: 50px;font-size:30px;font-family:sans-serif;'>No Jobs Found</h1>");
+						}
+						console.log(response.num_of_jobs)
+
+						let tab = document.querySelector(".tab_sec");
+						tab.style = "display: flex !important;";
+						window.scrollTo(0, 0);
+					}, 500);
+				}
+			})
+		}
+
+		function get_job()
+		{
+			empty_handler();
+			let jobs = document.querySelector(".jobs");
+			jobs.style = "display: flex !important;";
+			$(".jobs").css("display", "flex");
+			$(".jobs").empty();
+			$.ajax({
+				type: 'GET',
+				url: "{% url 'employee_offers_offline' %}",
+				data: {"search": "#$%^&"},
+				success: function(response)
+				{
+					loader_handler();
+					setTimeout(function(){
+						$(".jobs").html("<div class='job_header'><h1>Job Offers</h1><div class='navigations' id='search_bar_tab'><form method='POST' id='search_job'><span><img src='/static/asset/img/filter_two.png' id='filter_icon' class='filter_icon'><img src='/static/asset/img/search.svg' class='search_icon'><input type='text' name='search' placeholder='Search...'><button type='submit'>Search</button></span></form></div><p>Results(" + response.num_of_jobs + ")</p></div>")
+						for(let x = 0; x < response.num_of_jobs; x++)
+						{
+							let new_profile = "";
+							if(response.jobs[x].job_poster_profile_img == "none")
+							{
+								new_profile = "/static/asset/img/project.png";
+							}
+							else
+							{
+								new_profile = response.jobs[x].job_poster_profile_img
+							}
+							console.log(response)
+							let new_list = ""
+							let job_title = ""
+
+							if(window.innerWidth > 1001)
+							{
+								if(response.jobs[x].job_categories.length < 5)
+								{
+									for(let p = 0; p < response.jobs[x].job_categories.length;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 10) + "...</span>"
+									}
+								}
+
+								else
+								{
+									for(let p =0; p < 5;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 10) + "...</span>"
+									}
+								}
+
+								if (response.jobs[x].job_title.length < 22)
+								{
+									job_title = response.jobs[x].job_title
+								}
+
+								else
+								{
+									job_title = response.jobs[x].job_title.substr(0, 23) + "..."
+								}
+							}
+
+							else if(window.innerWidth < 1001 && window.innerWidth > 450)
+							{
+								if(response.jobs[x].job_categories.length < 5)
+								{
+									for(let p = 0; p < response.jobs[x].job_categories.length;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 8) + "...</span>"
+									}
+								}
+
+								else
+								{
+									for(let p =0; p < 5;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 8) + "...</span>"
+									}
+								}
+
+								if (response.jobs[x].job_title.length < 22)
+								{
+									job_title = response.jobs[x].job_title
+								}
+
+								else
+								{
+									job_title = response.jobs[x].job_title.substr(0, 23) + "..."
+								}
+							}
+
+							else
+							{
+								if(response.jobs[x].job_categories.length < 3)
+								{
+									for(let p = 0; p < response.jobs[x].job_categories.length;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 6) + "...</span>"
+									}
+								}
+
+								else
+								{
+									for(let p =0; p < 3;p++)
+									{
+										new_list += "<span class='single_job_category' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_categories[p].substr(0, 6) + "...</span>"
+									}
+								}
+
+								if (response.jobs[x].job_title.length < 18)
+								{
+									job_title = response.jobs[x].job_title
+								}
+
+								else
+								{
+									job_title = response.jobs[x].job_title.substr(0, 18) + "..."
+								}
+							}
+
+							$(".jobs").append("<a target='_blank' href='/jobview/" + response.jobs[x].job_id + "' class='single_job' id='job_stack_item' data-job-id=" + response.jobs[x].job_id + "><div class='fxskillset' data-job-id=" + response.jobs[x].job_id + "><div class='sevila' data-job-id=" + response.jobs[x].job_id + "><img src='" + new_profile + "' class='company_img' data-job-id=" + response.jobs[x].job_id + "><span class='job_content' data-job-id=" + response.jobs[x].job_id + "><h4 data-job-id=" + response.jobs[x].job_id + ">" + job_title + "</h4><p class='company_location_type' data-job-id=" + response.jobs[x].job_id + "></p><p class='company_name' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_poster_name + " - " + response.jobs[x].job_location + " - ("  + response.jobs[x].job_type + ")</p><p class='company_name' data-job-id=" + response.jobs[x].job_id + ">SALARY: " + response.jobs[x].job_pay + " (monthly)</p><article class='lorel' data-job-id=" + response.jobs[x].job_id + ">" + response.jobs[x].job_description.substr(0, 250) + "...<span class='red garbage' data-job-id=" + response.jobs[x].job_id + ">MORE</article><p class='categories_title' data-job-id=" + response.jobs[x].job_id + ">Categories:</p><span class='category_List_tab' data-job-id=" + response.jobs[x].job_id + ">" + new_list + "...</span></span><span class='job_menu' data-job-id=" + response.jobs[x].job_id + "><img src='/static/asset/img/menu.svg' class='more' data-job-id=" + response.jobs[x].job_id + "></span></div></div></a>")
+						}
+						$(".jobs").append("<div><br><br><br><span class='classico_button'><a onclick=get_job()>Refresh Jobs</a></span><br><br><br></div>")
+						if(response.num_of_jobs == 0)
+						{
+							$(".jobs").append("<br><br><br><br><br><br><br><h1 style='color:red;padding: 50px;font-size:30px;font-family:sans-serif;'>No Jobs Found</h1>");
+						}
+						console.log(response.num_of_jobs)
+
+						let tab = document.querySelector(".tab_sec");
+						tab.style = "display: flex !important;";
+						window.scrollTo(0, 0);
+					}, 500)
+				}
+			})
+		}
+
+		$(document).ready(function(){
+			setInterval(function(){
+			    if(window.innerWidth > 1000)
+			    {
+			        $(".navigation_drop_down").css({"display": "none"})
+			    }
+			});
+		});
+	</script>
+</body>
+</html>

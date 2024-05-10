@@ -1,0 +1,349 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scalable=yes">
+	<meta name="description" content="{{job_des}}">
+	<title>{{job_title}} Job</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="initial-scale=1, maximum-scalable=yes">
+	<meta name='keywords' content='job vacancies, staffing and recruitment, job opening, work opening, {{job_title}}.'>
+    <meta name='subject' content="Job Vacancies">
+    <meta name='copyright' content='Workhub Co'>
+    <meta name='language' content='english'>
+    <meta name='revised' content='Monday, May 6TH, 2024, 12:00AM'>
+    <meta name='topic' content='{{job_title}}, Job search, job market, job openings and vacancies, remote work, networking, resume, interview'>
+    <meta name='summary' content='Workhub, your gateway to career opportunities. We connect talented individuals with the job of their dreams through our platform, offering a seamless experience for both employers and job seekers.'>
+    <link rel="icon" href="https://www.xiconeditor.com/ImageFromStorage.ashx?Name=fbe2e019-8d4c-41e3-bd73-5672222b7003_16.png">
+    <meta name='classification' content='Job Vacancies'>
+    <meta name='author' content='Aderibigbe Ayomide, uniwylimp@gmail.com'>
+    <meta name='designer' content='Workhub, workhubagency@outlook.com'>
+    <meta name='reply-to' content='workhubagency@outlook.com'>
+    <meta name='owner' content='Aderibigbe Ayomide, uniwylimp@gmail.com'>
+    <meta name='url' content='https://workhubagency.pythonanywhere.com'>
+    <meta name='identifier-URL' content='https://workhubagency.pythonanywhere.com'>
+    <meta name='directory' content='submission'>
+    <meta name='pagename' content='Workhub Job Vacancies.'>
+    <meta name='category' content='Staffing and Recruitment, job'>
+    <meta name='coverage' content='Worldwide'>
+    <meta name='distribution' content='Global'>
+    <meta name='rating' content='General'>
+    <meta name='target' content='all'>
+    <meta name='HandheldFriendly' content='True'>
+    <meta name='MobileOptimized' content='320'>
+	<link rel="stylesheet" type="text/css" href="{% static './css/job_view.css' %}">
+	<script type="text/javascript" src="{% static './js/jquery-1.9.1.min.js' %}"></script>
+</head>
+<body>
+	<nav>
+		<div class="logo">
+			<img src="{% static './asset/logo/logo.png' %}">
+		</div>
+		<div class="navigations nav_old">
+			<a href="/">Home</a>
+			<a href="/job_board">JobBoard</a>
+			<a href="/employer_signup">Company</a>
+			<a href="/employee_signup">FindJob</a>
+			<a href="https://www.themuse.com/advice/45-pieces-of-career-advice-that-will-get-you-to-the-top" target="_blank">Carrier</a>
+			<a href="https://flutterwave.com/donate/61efsjgmjsvx" target="_blank">Donate</a>
+		</div>
+		<div class="extra">
+			<a href="https://www.x.com/workhubagency/" target="_blank" class="social_social"><img src="{% static './asset/img/facebook.png' %}"></a>
+			<a href="https://www.instagram.com/workhub.co/" target="_blank" class="social_social"><img src="{% static './asset/img/instagram_1.png' %}"></a>
+			<a href="https://chat.whatsapp.com/GprLUZWV7TP5KtjSBIIb8I" target="_blank" class="social_social"><img src="{% static './asset/img/whatsapp_1.png' %}"></a>
+			<span class="classico_button">
+				<a href="/login">Signin</a>
+			</span>
+			<a href="#" id="menu_drop"><img src="{% static './asset/img/menu_tab.png' %}" class="menu_tab"></a>
+		</div>
+	</nav>
+	<section class="navigation_drop_down">
+		<a href="/">Home</a>
+		<a href="/job_board">JobBoard</a>
+		<a href="/employer_signup">Company</a>
+		<a href="/employee_signup">FindJob</a>
+		<a href="https://www.themuse.com/advice/45-pieces-of-career-advice-that-will-get-you-to-the-top" target="_blank">Carrier</a>
+		<a href="https://flutterwave.com/donate/61efsjgmjsvx" target="_blank">Donate</a>
+	</section>
+	<div id="search_filter" class="search_filter">
+		<form method='GET' id='filter_search_job'>
+			<div class="flit_flex">
+				<span>
+					<h2>Job Title: </h2>
+					<span class="flit_flex">
+						<input type='text' id="job_title" name='search' placeholder='Ex: Senior Web Developer...'>
+					</span>
+				</span>
+				<span>
+					<h2>Job Location: </h2>
+					<span class="flit_flex">
+						<input type='text' id="job_country" name='search' placeholder='Country: United Kingdom...'>
+						<input type='text' id="job_city" name='search' placeholder='City: Whales...'>
+					</span>
+				</span>
+			</div>
+			<div class="flit_flex">
+				<span>
+					<h2>Job Category: </h2>
+					<span class="flit_flex">
+						<input type='text' id="job_category" name='search' placeholder='Ex: Software Development...'>
+					</span>
+				</span>
+				<span>
+					<h2>Company: </h2>
+					<span class="flit_flex">
+						<input type='text' id="job_company" name='search' placeholder='Ex: Microsoft Co...'>
+					</span>
+				</span>
+			</div>
+			<div>
+				<h2>Job Type: </h2>
+				<span class="flit_flex">
+					<span class="lit_flex">
+						<h2>All: </h2>
+						<input type='radio' class="job_type" name='job_type' value='All' placeholder='All' checked>
+					</span>
+					<span class="lit_flex">
+						<h2>OnSite: </h2>
+						<input type='radio' class="job_type" name='job_type' value='On-Site' placeholder='On-Site'>
+					</span>
+					<span class="lit_flex">
+						<h2>Hybrid: </h2>
+						<input type='radio' name='job_type' value='Hybrid' placeholder='Hybrid'>
+					</span>
+					<span class="lit_flex">
+						<h2>Remote: </h2>
+						<input type='radio' name='job_type' value='Remote' placeholder='Remote'>
+					</span>
+					<span class="lit_flex">
+						<button type='submit' id="filter_the_search">Filter</button>
+					</span>
+				</span>
+			</div>
+		</form>
+	</div>
+	<section class="loader_container">
+            <span class="loader"></span>
+	</section>
+	<section class="main">
+		<div class="tab_sec">
+			<span class="tab_sec_header">
+				<span class="red">NAVI</span>GATION
+			</span>
+			<span class="tab_sec_item">
+				Primary Links
+			</span>
+			<a href="/carrier_advice" target="_blank" class="tab_sec_item_child">
+				<img src="{% static './asset/img/picture.png' %}">
+				Carrier Advice
+			</a>
+			<a href="/about" target="_blank" class="tab_sec_item_child">
+				<img src="{% static './asset/img/event.png' %}">
+				About
+			</a>
+			<a href="https://flutterwave.com/donate/61efsjgmjsvx" target="_blank" class="tab_sec_item_child">
+				<img src="{% static './asset/img/article.png' %}">
+				Donate
+			</a>
+			<span class="tab_sec_item">
+				Social Pages Links
+			</span>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/instagram_1.png' %}">
+				Instagram
+			</span>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/facebook.png' %}">
+				FaceBook
+			</span>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/twitter.png' %}">
+				Twitter
+			</span>
+			<span class="tab_sec_item">
+				Community Links
+			</span>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/whatsapp_1.png' %}">
+				Whatsapp
+			</span>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/telegram.png' %}">
+				Telegram
+			</span>
+			<span class="tab_sec_item_child">
+				<img src="{% static './asset/img/facebook.png' %}">
+				Facebook
+			</span>
+		</div>
+		<div class="single_job_apply">
+			<div class="single_job_tab">
+			</div>
+		</div>
+		<div class="single_job_confirm">
+			<div class="single_job_tab_confirm">
+			</div>
+		</div>
+	</section>
+	<div id="confirm">
+		<h3>CONFIRM!</h3>
+		<div class="message">
+			{{message}}
+		</div>
+		<button onclick="close_pop_up()">Upload</button>
+	</div>
+	<h3 class="support_message">Your Device Screen Size Is Not Supported. Try a larger screen!</h3>
+	<div id="hideAll">&nbsp</div>
+	<script type="text/javascript">
+		var super_count = 0;
+		$("#menu_drop").on("click", function()
+		{
+			if(super_count == 0)
+			{
+				super_count = 1;
+				let eken = document.querySelector(".navigation_drop_down");
+				eken.style = "flex !important;";
+				$(".navigation_drop_down").css({"height": "100%", "width": "100%", "position": "fixed", "left": "0px"});
+			}
+
+			else
+			{
+				super_count = 0;
+				let eken = document.querySelector(".navigation_drop_down");
+				eken.style = "none !important;";
+			}
+		});
+
+
+		var loader_active = false;
+
+		function loader_handler()
+		{
+			if(loader_active == false){
+				setTimeout(function(){
+					let loader = document.querySelector('.loader_container');
+					loader.style = "display: flex !important; opacity: 1 !important;";
+					loader_active = true;
+				}, 10);
+
+				setTimeout(function(){
+					let loader = document.querySelector('.loader_container');
+					loader.style = "opacity: 0.5; !important";
+				}, 2000)
+
+				setTimeout(function(){
+					let loader = document.querySelector('.loader_container');
+					loader.style = "opacity: 0.3; !important";
+				}, 2100)
+
+				setTimeout(function(){
+					let loader = document.querySelector('.loader_container');
+					loader.style = "opacity: 0.0 !important;";
+				}, 2200)
+
+				setTimeout(function(){
+					let loader = document.querySelector('.loader_container');
+					loader.style = "display: none !important;";
+					loader_active = false;
+				}, 2300)
+			}
+		}
+
+
+		function empty_handler()
+		{
+			let handler = document.querySelector("#confirm");
+			handler.style = "display: none !important;";
+			handler = document.querySelector(".single_job_apply");
+			handler.style = "display: none !important;";
+			window.scrollTo(0, 0);
+		}
+
+		window.onload = function(){
+			document.getElementById("hideAll").style.display = "none";
+			loader_handler();
+			$.ajax({
+				type: 'GET',
+				data: {
+					job_id: {{job_id}},
+					},
+				url: "{% url 'employee_single_offer_offline' %}",
+				success: function(response)
+				{
+					empty_handler();
+					loader_handler();
+					setTimeout(function(){
+						let single_slab_job = document.querySelector(".single_job_apply");
+						single_slab_job.style = "display: flex !important;";
+						let new_profile = "";
+						if(response.job.job_poster_profile_img == "none")
+						{
+							new_profile = "/static/asset/img/project.png";
+						}
+						else
+						{
+							new_profile = response.job.job_poster_profile_img
+						}
+						$(".single_job_tab").html("<h1 class='tora'><span>APPLY NOW</span><span class='el_classico' ><a href='/job_board' class='exit_single_job' >(exit)</a></span></h1><img src=" + new_profile + "><h1>" + response.job.job_title + "(" + response.job.job_type + ")</h1><h2>Apply to: " + response.job.job_poster_name + "</h2><article>" + response.job.job_description + "</article>")
+						$(".single_job_tab").append("<p class='under_border'><strong>REQUIREMENTS</strong></p>")
+						for(let p = 0; p < response.job.job_requirements.length; p++)
+						{
+							$(".single_job_tab").append("<p>- " + response.job.job_requirements[p] + "</p>")
+						}
+						$(".single_job_tab").append("<p class='under_border'><strong>ROLES</strong></p>")
+						for(let p = 0; p < response.job.job_roles.length; p++)
+						{
+							$(".single_job_tab").append("<p>- " + response.job.job_roles[p] + "</p>")
+						}
+						$(".single_job_tab").append("<p class='under_border'><strong>Pay</strong>: " + response.job.job_pay +" (Monthly)</p>")
+						$(".single_job_tab").append("<p class='under_border'><strong>Location</strong>: " + response.job.job_location + "</p>")
+						let category = "";
+						for(let p = 0; p < response.job.job_categories.length; p++)
+						{
+							category += "<span class='item_tag'>" + response.job.job_categories[p] + "</span>";
+						}
+						$(".single_job_tab").append("<p><strong>Categories</strong>: " + category + "</p><span class='apply_to_job classico_button'><a id='apply_for_job' data-job-special-id=" + response.job.job_id + ">APPLY</a></span>")
+						window.scrollTo(0, 0);
+					}, 500);
+				}
+			});
+		}
+
+		var job_buffer_id = 0
+		$(document).on('click', '#apply_for_job', function(e){
+
+			let is_authenticated = "{{user_is_authenticated}}"
+			let handler = document.querySelector("#confirm");
+			handler.style = "display: flex !important;";
+			if (is_authenticated == "yes")
+			{
+				$("#confirm").html("<h3>MESSAGE!</h3><div class='message'>You are required to login in order to apply for job.</div><span><a href='/dashboard'>Login</a><a onclick=close_pop_up()</a></span>");
+
+			}
+			else
+			{
+				$("#confirm").html("<h3>MESSAGE!</h3><div class='message'>You are required to signin in order to apply for job.</div><span><a href='/login'>Login</a><a onclick=close_pop_up()>Cancel</a></span>");
+			}
+		});
+
+		 function close_pop_up()
+			{
+				let handler = document.querySelector("#confirm");
+				handler.style = "display: none !important;";
+			}
+
+
+		$(document).ready(function(){
+			setInterval(function(){
+			    if(window.innerWidth > 1000)
+			    {
+			        $(".navigation_drop_down").css({"display": "none"})
+			    }
+			});
+		});
+	</script>
+</body>
+</html>
